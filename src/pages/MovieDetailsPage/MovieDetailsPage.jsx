@@ -1,6 +1,6 @@
-import { useParams, Link, Outlet } from "react-router-dom";
+import { useParams, Link, Outlet, useLocation } from "react-router-dom";
 import { fetchDetails } from "../../components/Api/Api";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Error from "../../components/Error/Error";
 // import Loader from "../../components/Loader/Loader";
 
@@ -10,6 +10,8 @@ export default function MovieDetailsPage({ onLoading }) {
   const [error, setError] = useState(false);
   const [genres, setGenres] = useState([]);
   const [release, setRelease] = useState("");
+  const location = useLocation();
+  const backLinkRef = useRef(location.state ?? "/movies");
 
   useEffect(() => {
     if (!movieId) return;
@@ -39,6 +41,7 @@ export default function MovieDetailsPage({ onLoading }) {
       {error && <Error />}
       <div>
         <div>
+          <Link to={backLinkRef.current}>Go back</Link>
           <img
             src={`https://image.tmdb.org/t/p/w500${poster_path}`}
             alt={title}

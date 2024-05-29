@@ -9,9 +9,9 @@ const MoviesPage = () => {
   const [movieSearch, setMovieSearch] = useState([]);
   const [error, setError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
+  const searchMovieName = searchParams.get("searchMovieName") ?? "";
 
   useEffect(() => {
-    const searchMovieName = searchParams.get("searchMovieName");
     if (searchMovieName) {
       const fetchSearchMovies = async () => {
         try {
@@ -25,9 +25,11 @@ const MoviesPage = () => {
       };
       fetchSearchMovies();
     }
-  }, [searchParams, movieSearch]);
+  }, [searchParams, movieSearch, searchMovieName]);
 
   const handleMovie = async (searchMovieName) => {
+    // searchParams.set("searchMovieName", topic);
+    // setSearchParams(searchParams);
     setSearchParams({ query: searchMovieName });
   };
   return (
