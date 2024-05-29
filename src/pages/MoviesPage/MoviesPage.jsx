@@ -7,19 +7,15 @@ import MovieList from "../../components/MovieList/MovieList";
 
 const MoviesPage = () => {
   const [movieSearch, setMovieSearch] = useState([]);
-  // const [searchMovieName, setSearchMovieName] = useState("");
   const [error, setError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    const searchMovieName = searchParams.get("query");
+    const searchMovieName = searchParams.get("searchMovieName");
     if (searchMovieName) {
-      // setSearchMovieName(searchMovieName);
-
       const fetchSearchMovies = async () => {
         try {
           setError(false);
-          // setSearchParams({ query: searchMovieName });
           const data = await fetchMovie(searchMovieName);
           setMovieSearch(data.results);
           console.log(data.results);
@@ -29,16 +25,15 @@ const MoviesPage = () => {
       };
       fetchSearchMovies();
     }
-  }, [searchParams]);
+  }, [searchParams, movieSearch]);
 
   const handleMovie = async (searchMovieName) => {
-    // setSearchMovieName(searchMovieName);
     setSearchParams({ query: searchMovieName });
   };
   return (
     <div>
-      {error && <Error />}
       <SearchForm onSearch={handleMovie} />
+      {error && <Error />}
       {movieSearch.length > 0 && <MovieList movies={movieSearch} />}
     </div>
   );
