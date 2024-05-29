@@ -20,7 +20,7 @@ export default function MovieCast() {
       }
     };
     castLoad();
-  }, [movieId, castAll, setError]);
+  }, [movieId, castAll, error]);
   return (
     <div>
       {error && <Error />}

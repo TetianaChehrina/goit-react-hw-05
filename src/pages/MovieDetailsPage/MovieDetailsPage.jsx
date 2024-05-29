@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Outlet } from "react-router-dom";
 import { fetchDetails } from "../../components/Api/Api";
 import { useEffect, useState } from "react";
 import Error from "../../components/Error/Error";
@@ -66,6 +66,7 @@ export default function MovieDetailsPage({ onLoading }) {
           <Link to="reviews">Reviews</Link>
         </li>
       </ul>
+      <Outlet />
     </div>
   );
 }

@@ -5,13 +5,12 @@ const TOKEN_KEY =
 
 axios.defaults.baseURL = "https://api.themoviedb.org";
 
-export async function fetchMovie(searchQuery, page) {
+export async function fetchMovie(searchQuery) {
   const response = await axios.get(
-    "/3/search/movie",
+    `/3/search/movie`,
     {
       params: {
         query: searchQuery,
-        page: page,
       },
     },
     {
@@ -45,7 +44,7 @@ export async function fetchReviews(movie_id) {
       },
     }
   );
-  return response.data;
+  return response;
 }
 
 export async function fetchCast(movie_id) {

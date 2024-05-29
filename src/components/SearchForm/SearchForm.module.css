@@ -1,0 +1,10 @@
+.error_Toast {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.error_Icon {
+  width: 40px;
+  height: 40px;
+}
