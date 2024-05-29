@@ -5,34 +5,34 @@ import Error from "../../components/Error/Error";
 import SearchForm from "../../components/SearchForm/SearchForm";
 import MovieList from "../../components/MovieList/MovieList";
 
-export default function MoviesPage() {
+const MoviesPage = () => {
   const [movieSearch, setMovieSearch] = useState([]);
-  const [searchMovieName, setSearchMovieName] = useState("");
+  // const [searchMovieName, setSearchMovieName] = useState("");
   const [error, setError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const searchMovieName = searchParams.get("query");
     if (searchMovieName) {
-      setSearchMovieName(searchMovieName);
+      // setSearchMovieName(searchMovieName);
 
       const fetchSearchMovies = async () => {
         try {
           setError(false);
-          setSearchParams({ query: searchMovieName });
-          const response = await fetchMovie(searchMovieName);
-          setMovieSearch(response.results);
-          console.log(response.results);
+          // setSearchParams({ query: searchMovieName });
+          const data = await fetchMovie(searchMovieName);
+          setMovieSearch(data.results);
+          console.log(data.results);
         } catch (error) {
           setError(true);
         }
       };
       fetchSearchMovies();
     }
-  }, [searchParams, setSearchParams, setSearchMovieName]);
+  }, [searchParams]);
 
-  const handleMovie = (searchMovieName) => {
-    setSearchMovieName(searchMovieName);
+  const handleMovie = async (searchMovieName) => {
+    // setSearchMovieName(searchMovieName);
     setSearchParams({ query: searchMovieName });
   };
   return (
@@ -42,4 +42,5 @@ export default function MoviesPage() {
       {movieSearch.length > 0 && <MovieList movies={movieSearch} />}
     </div>
   );
-}
+};
+export default MoviesPage;

@@ -61,13 +61,13 @@ const SearchForm = ({ onSearch }) => {
         }}
       />
       <Formik
-        initialValues={{ initialValues }}
+        initialValues={initialValues}
         validationSchema={contactsSchema}
         onSubmit={handleSubmit}
       >
         <Form>
           <div>
-            <label htmlFor={searchId}>Search movies</label>
+            <label htmlFor={searchId}></label>
             <Field
               type="text"
               name="text"
