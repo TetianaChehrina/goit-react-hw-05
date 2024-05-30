@@ -31,7 +31,7 @@ export default function MovieDetailsPage({ onLoading }) {
       }
     };
     MovieDetails();
-  }, [movieId, onLoading, error]);
+  }, [movieId, onLoading]);
   console.log(movieId);
 
   const { poster_path, title, vote_average, overview } = movie;

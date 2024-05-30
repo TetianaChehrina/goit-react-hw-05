@@ -20,7 +20,7 @@ export default function MovieReviws() {
       }
     };
     reviewsLoad();
-  }, [movieId, error, reviews]);
+  }, [movieId]);
   return (
     <div>
       {error && <Error />}

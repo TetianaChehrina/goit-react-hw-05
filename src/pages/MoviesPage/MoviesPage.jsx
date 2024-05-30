@@ -9,23 +9,24 @@ const MoviesPage = () => {
   const [movieSearch, setMovieSearch] = useState([]);
   const [error, setError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchMovieName = searchParams.get("searchMovieName") ?? "";
+  const searchMovieName = searchParams.get("query") ?? "";
 
   useEffect(() => {
-    if (searchMovieName) {
-      const fetchSearchMovies = async () => {
+    const fetchSearchMovies = async () => {
+      if (searchParams) {
         try {
           setError(false);
           const data = await fetchMovie(searchMovieName);
           setMovieSearch(data.results);
-          console.log(data.results);
         } catch (error) {
           setError(true);
         }
-      };
-      fetchSearchMovies();
-    }
-  }, [searchParams, movieSearch, searchMovieName]);
+      } else {
+        return;
+      }
+    };
+    fetchSearchMovies();
+  }, [searchMovieName, searchParams]);
 
   const handleMovie = async (searchMovieName) => {
     // searchParams.set("searchMovieName", topic);
@@ -36,7 +37,9 @@ const MoviesPage = () => {
     <div>
       <SearchForm onSearch={handleMovie} />
       {error && <Error />}
-      {movieSearch.length > 0 && <MovieList movies={movieSearch} />}
+      {movieSearch.length > 0 && (
+        <MovieList movies={movieSearch} query={searchMovieName} />
+      )}
     </div>
   );
 };

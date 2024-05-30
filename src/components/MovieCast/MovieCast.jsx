@@ -12,15 +12,15 @@ export default function MovieCast() {
     const castLoad = async () => {
       try {
         setError(false);
-        const casts = await fetchCast(movieId);
-        setCastAll(casts.data.cast);
-        console.log(casts);
+        const response = await fetchCast(movieId);
+        setCastAll(response.cast);
+        console.log(response.cast);
       } catch (error) {
         setError(true);
       }
     };
     castLoad();
-  }, [movieId, castAll, error]);
+  }, [movieId]);
   return (
     <div>
       {error && <Error />}
