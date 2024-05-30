@@ -1,0 +1,62 @@
+.btnBack {
+  padding-top: 15px;
+}
+
+.backLink {
+  align-items: center;
+  font-size: 16px;
+  color: black;
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+.backLink_btn {
+  border: 1 solid;
+  margin-bottom: 20px;
+  padding: 8px;
+}
+
+.icon {
+  margin-right: 8px;
+}
+
+.container {
+  display: flex;
+}
+
+.imageMovie {
+  height: 530px;
+  width: 410px;
+}
+.title {
+  font-size: 36px;
+}
+
+.score {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.overview {
+  font-weight: 28px;
+}
+
+.movieInfo {
+  margin-left: 25px;
+}
+
+.addInfo {
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.genre {
+}
+
+.genreList {
+  display: flex;
+  justify-content: flex-start;
+  align-self: start;
+  gap: 20px;
+  list-style: none;
+}

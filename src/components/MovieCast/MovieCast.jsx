@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchCast } from "../Api/Api";
 import Error from "../Error/Error";
+import css from "./MovieCast.module.css";
 
 export default function MovieCast() {
   const [castAll, setCastAll] = useState([]);
@@ -28,6 +29,7 @@ export default function MovieCast() {
         {castAll.map((cast) => (
           <li key={cast.id}>
             <img
+              className={css.image}
               src={`https://image.tmdb.org/t/p/w500${cast.profile_path}`}
               alt={cast.name}
             />

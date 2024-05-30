@@ -13,16 +13,12 @@ const MoviesPage = () => {
 
   useEffect(() => {
     const fetchSearchMovies = async () => {
-      if (searchParams) {
-        try {
-          setError(false);
-          const data = await fetchMovie(searchMovieName);
-          setMovieSearch(data.results);
-        } catch (error) {
-          setError(true);
-        }
-      } else {
-        return;
+      try {
+        setError(false);
+        const data = await fetchMovie(searchMovieName);
+        setMovieSearch(data.results);
+      } catch (error) {
+        setError(true);
       }
     };
     fetchSearchMovies();
@@ -37,9 +33,7 @@ const MoviesPage = () => {
     <div>
       <SearchForm onSearch={handleMovie} />
       {error && <Error />}
-      {movieSearch.length > 0 && (
-        <MovieList movies={movieSearch} query={searchMovieName} />
-      )}
+      {movieSearch.length > 0 && <MovieList movies={movieSearch} />}
     </div>
   );
 };
